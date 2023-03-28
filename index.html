@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js" defer></script>
+    <script src="script.js" defer></script>
+</head>
+
+<body>
+    <div class="box" id="box">
+        <h1>To-Do List</h1>
+        <p>What needs to be done?</p>
+        <div>
+            <input type="text" class="input-text" v-model="notesTopic.name">
+            <button class="add-btn" @click="addNote">Add</button>
+        </div>
+        <section>
+            <h6>{{taskCompleted}} out of {{totalTask}} items completed</h6>
+            <div class="task" v-for="(note,index) in notes" :key="note">
+                <input type="checkbox" class="input-check" @click="taskDone($event,index)"> <span
+                    class="topic">{{note.name}}</span>
+                <div class="btn-div">
+                    <Button class="edit-btn" @click="editTask(index)">Edit</Button>
+                    <button class="delete-btn " @click="deleteTask(index)">Delete</button>
+                </div>
+            </div>
+        </section>
+    </div>
+</body>
+
+</html>
